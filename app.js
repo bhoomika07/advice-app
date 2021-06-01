@@ -1,6 +1,14 @@
 const advice=document.querySelector('#advice')
+const advbt=document.querySelector('#bt')
 
-fetch('https://api.adviceslip.com/advice').then(response => {
+advbt.addEventListener('click', () =>{
+    getAdvice();
+})
+window.onload =() =>{
+    getAdvice();
+}
+function getAdvice ()  {
+    fetch('https://api.adviceslip.com/advice').then(response => {
     return response.json();
 }).then(adviceData =>{
     const adviceObj =adviceData.slip;
@@ -8,14 +16,4 @@ fetch('https://api.adviceslip.com/advice').then(response => {
 }).catch(error =>{
     console.log(error);
 })
-// const axios = require('axios');
-
-// axios.get('https://api.adviceslip.com/advice')
-//   .then(function (response) {
-//       const adviceObj=response.data.slip;
-//       advice.innerHTML=`<h4>${adviceObj.advice}</h4>`
-//       console.log(response.data.slip.advice);
-//   })
-//   .catch(function (error) {
-//     console.log(error);
-//   })
+}
