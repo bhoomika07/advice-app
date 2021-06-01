@@ -3,7 +3,8 @@ const advbt=document.querySelector('#bt')
 const searchBtn=document.querySelector("#searchBtn")
 
 searchBtn.addEventListener('click', () =>{
-    console.log('listening')
+    const searchField=document.getElementById('navBarSearchForm');
+    searchAdvice(searchField.value);
 })
 
 advbt.addEventListener('click', () =>{
@@ -25,8 +26,8 @@ window.onload = () => {
     getAdvice();
     const searchField=document.getElementById('navBarSearchForm');
     searchField.onkeyup = (event) =>{
-        searchAdvice(searchField.value);
-    }
+         searchAdvice(searchField.value);
+     }
 }
 
 function renderResults(res) {
