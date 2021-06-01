@@ -1,8 +1,12 @@
 const advice=document.querySelector('#advice')
-advice.innerHTML='do backend first';
 
 fetch('https://api.adviceslip.com/advice').then(response => {
-    return console.log(response.json());
+    return response.json();
+}).then(adviceData =>{
+    const adviceObj =adviceData.slip;
+    advice.innerHTML=`<h4 style="margin: 0 auto; padding:15%"><em><i>${adviceObj.advice}</i></e></h4>`
+}).catch(error =>{
+    console.log(error);
 })
 // const axios = require('axios');
 
