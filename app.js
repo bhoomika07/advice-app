@@ -1,9 +1,15 @@
 const advice=document.querySelector('#advice')
 const advbt=document.querySelector('#bt')
-const searchBtn=document.querySelector("#searchBtn")
+const searchBtn=document.querySelector('#searchBtn')
+const form=document.querySelector('#form')
+
+form.addEventListener("submit", function(event){
+    event.preventDefault(); 
+  })
 
 searchBtn.addEventListener('click', () =>{
     const searchField=document.getElementById('navBarSearchForm');
+    console.log(searchField.value);
     searchAdvice(searchField.value);
 })
 
@@ -31,10 +37,18 @@ window.onload = () => {
 }
 
 function renderResults(res) {
-    for (let index = 0; index < res.length; index++) {
-        const element = res[0];
-        advice.innerHTML=`<h4 style="margin: 0 auto; padding:15%"><em><i>${element}</i></e></h4>`    
-    }
+        let s=res.length;
+        let y;
+        if(s==0)
+        {
+        console.log("Nothing entered");
+        }
+        else{
+        y=Math.floor(Math.random() * s);
+        const element = res[y];
+        console.log(element)
+        advice.innerHTML=`<h4 style="margin: 0 auto; padding:15%"><em><i>${element}</i></e></h4>`    ;
+        }
 }
 
 function searchAdvice(query){
